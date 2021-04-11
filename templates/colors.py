@@ -1,0 +1,6 @@
+import random
+
+colors = [0x8FBCBB, 0x88C0D0, 0x81A1C1, 0x5E81AC, 0xBF616A, 0xD08770, 0xEBCB8B, 0xA3BE8C, 0xB48EAD]
+
+def get_color():
+  return random.choice(colors)
