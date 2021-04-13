@@ -1,12 +1,12 @@
+import os
 import random
 import yaml
 
 from discord.ext import commands, tasks
 
 from templates.status import status
-from templates import complete_embed
 
-with open("config.json", "r") as file:
+with open("config.yaml", "r") as file:
   f = yaml.safe_load(file)
   prefix = f["prefix"]
   token = f["token"]
@@ -36,16 +36,10 @@ async def on_command_error(ctx, error):
 async def loop():
   await set_status()
 
-@client.command(name = 'help', description = 'Display the help menu')
-async def help(ctx):
-  desc = ""
-  for command in client.commands:
-    desc += f"**`{command.name}`** - {command.description}\n"
+for file in os.listdir("./cogs"):
+  if file.endswith(".py"):
+    client.load_extension(f"cogs.{file[:-3]}")
 
-  await ctx.send(embed = complete_embed.embed('Help Menu', desc, ctx.author))
 
-@client.command(name = 'test', description = 'Testing the bot')
-async def test(ctx):
-  await ctx.send(embed = complete_embed.embed('Testing', '**Test Successful**', ctx.author))
 
 client.run(token)
