@@ -25,7 +25,7 @@ class YourCog(commands.Cog):
   @commands.command(name = "your_command_name",
   description = "Command Description", aliases = ("your_command_alias",))
   async def _one(self, ctx):
-    //Your Code here
+    #Your Code here
     await ctx.send("Hi!")
 
 def setup(client):
@@ -46,7 +46,7 @@ class YourCog(commands.Cog):
   @commands.command(name = "your_command_name",
   description = "Command Description", aliases = ("your_command_alias",))
   async def _one(self, ctx):
-    //Your Code here
+    #Your Code here
     await ctx.send(embed = embed('Title', 'Description', ctx.author))
 
 def setup(client):
